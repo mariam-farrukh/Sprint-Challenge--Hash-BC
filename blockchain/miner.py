@@ -24,10 +24,14 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = 0
+    proof = 0 # Ran multiple instances of this code and changed the proof starting points to be 0, 10000, 100000, 1000000, and 10000000
     #  TODO: Your code here
     while valid_proof(last_hash, proof) is False:
-        proof += 1
+        if (timer() - start <= 5): # Ran multiple instances of this code and changed the amount of time it should spend on it.
+            proof += 1
+        else:
+            proof = 0
+            break
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
